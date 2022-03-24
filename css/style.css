@@ -1,0 +1,380 @@
+:root {
+    --base-font-size: 2rem;
+    --media-base-font-size: 1rem;
+    --smaller-font-size: 1.5rem;
+    --big-font-size: 4rem;
+    --letter-spacing-value: 20px;
+    --bacis-font: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    background: radial-gradient(ellipse,rgb(46, 46, 46),black);
+}
+
+h1 {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: min(var(--big-font-size), 8vw);
+    font-style:oblique;
+    letter-spacing: 20px;
+    margin: 10px 0 10px var(--letter-spacing-value);
+    user-select: none;
+    background: repeating-radial-gradient(rgb(73, 73, 241) 10px, orange 80px);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: white 1px;
+    -moz-text-stroke: white 1px;
+}
+
+#autocomplete {
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    right: 0px;
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(to top right, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    user-select: none;
+    cursor: pointer;
+    background-size: 300% 300%;
+    align-self: flex-end;
+    animation: buttonBackgroundAnimation 15s linear infinite;
+}
+
+@keyframes buttonBackgroundAnimation {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;   
+    }
+    100% {
+        background-position: 0 50%;  
+    }
+}
+
+#autocomplete-text {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+#autocomplete:hover {
+    background: white;
+}
+
+#autocomplete:hover > #autocomplete-text {
+    background-image: linear-gradient(to top right, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    color: transparent;
+    
+}
+
+dialog {
+    border-radius: 20px;
+    box-shadow: 0 0 20px 10px red;
+    animation: dialogAnimation 4s linear infinite;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.664);
+}
+
+#flexbuttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+dialog > p {
+    font-family:sans-serif;
+}
+
+@keyframes dialogAnimation {
+    0% {
+        box-shadow: 0 0 20px 10px red;
+    }
+    50% {
+        box-shadow: 0 0 20px 10px orange;
+    }
+}
+
+button {
+    width: 100px;
+    height: 45px;
+    border-radius: 25px;
+    background: linear-gradient(to top right, rgb(255, 208, 120), rgb(135, 255, 135));
+    box-shadow: 0px 0 10px 2px orange;
+    cursor: pointer;
+    transition: border-radius .5s, color 0.2s;
+    position: relative;
+    overflow: hidden;
+    color: black;
+    z-index: 1;
+    user-select: none;
+}
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scaleY(0);
+    background: #1b9de4;
+    transform-origin: bottom;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: 0.7s;
+}
+button:hover::before {
+    width: 100%;
+    transition: 0.2s linear;
+    transform: translate(-50%, -50%) scaleY(1);
+}
+button:hover {
+    transition: border-radius .5s, color 0.2s;
+    color: white;
+    border-radius: 10px;
+}
+
+
+/* #autocomplete::before {
+    content: 'This action will terminate your score actions !!!';
+    width: 100px;
+    height: 45px;
+    background: rgb(151, 151, 151);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    display: none;
+    border-radius: 15px;
+    font-size: auto;
+}
+
+#autocomplete:hover::before {
+    display: block;
+} */
+
+
+
+#whole-flex {
+    margin-top: 5vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    width: 90vw;
+    height: 100%; 
+    inset: 45% 0 0 50%;
+    gap: 10px;
+    transform: translate(-50%, -50%);
+}
+
+#numberPick {
+    display: flex;
+    position: relative;
+    /* background-color: rgb(192, 192, 192); */
+    width: 500px;
+    height: 100px;
+    border-radius: 10px;
+    animation: numberPickAnimation 1s linear;
+    visibility: hidden;
+    box-sizing: border-box;
+    border: 2px solid black;
+    
+}
+
+.numberChoise {
+    display: inline-block;
+    flex-grow: 1;
+    max-width: 50%;
+    margin: auto;
+    background-color: rgb(192, 192, 192);
+    border: 2px solid black;
+    text-align: center;
+    font-size: var(--base-font-size);
+    line-height: 300%;
+    color: black;
+    user-select: none;
+    cursor: pointer;
+}
+
+
+.numberChoise:hover {
+    background:rgb(150, 150, 150);
+}
+
+@keyframes numberPickAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.flexbox {
+    display: flex;
+    position: relative;
+    background: radial-gradient(circle at center, rgb(128, 128, 255), rgb(98, 0, 255));
+    width: 500px;
+    aspect-ratio: 1/1;
+    /* border-radius: 40px; */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.8%;
+    /* border: 10px solid blue; */
+    border: 5px solid orange;
+    border-radius: 2px;
+    padding: 10px;
+    z-index: 0;
+}
+
+.flexbox.completed::before {
+    content: attr(data-result);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.815);
+    color: white;
+    font-size: var(--base-font-size);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    animation: flexboxBeforeAppear 2s linear;
+    z-index: 1;
+}
+
+@keyframes flexboxBeforeAppear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.space {
+    width: 1.6%;
+    height: 5%;
+    
+}
+
+.space-vert {
+    width: 100%;
+    height: 1.6%;
+}
+
+.flexbox-child {
+    position: relative;
+    width: 9%;
+    aspect-ratio: 1/1;
+    background-color: rgb(185, 185, 185);
+    border: 2px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    cursor: pointer;
+    flex-grow: 0;
+}
+
+.flexbox-child:not([data-static], .active):hover {
+    background-color: rgb(141, 141, 141);
+}
+
+.flexbox-child::before {
+    content: attr(data-value);
+    position: absolute;
+    display: inline-block;
+    inset: 50% 0 0 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: var(--base-font-size);
+    line-height: 150%;
+    width: 100%;
+    height: 100%;
+}
+
+.flexbox-child.active {
+    animation: activeEffect 0.3s linear;
+    background: rgb(213, 252, 40);
+}
+
+[data-static = "true"] {
+    color: blue;
+}
+
+@keyframes activeEffect {
+    0% {
+        background: rgb(185, 185, 185)
+    }
+    100% {
+        background: rgb(213, 252, 40)
+    }
+}
+
+@media (max-width: 600px) or (max-height: 600px) {
+    #autocomplete {
+        width: 50vw;
+    }
+    .flexbox {
+        width: 300px;
+        height: 300px;
+    }
+    .flexbox-child::before {
+        font-size: var(--media-base-font-size);
+    }
+    #numberPick {
+        width: 95vw;
+    }
+    dialog {
+        width: 70vw;
+    }
+    #whole-flex {
+        justify-content: start;
+    }
+}
+
+@media (max-width: 340px) {
+    .flexbox {
+        justify-content:center;
+        width: 90vw;
+        height: 90vw;
+        border: 1px solid orange;
+    }
+    .flexbox.completed::before {
+        font-size: 10vw;
+        letter-spacing: 0;
+    }
+    .flexbox-child::before {
+        font-size: auto;
+        line-height: 100%;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .flexbox {
+        background: radial-gradient(circle at center, rgb(102, 100, 100), rgb(22, 22, 22));
+        border-color: rgb(78, 77, 77);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    
+}
