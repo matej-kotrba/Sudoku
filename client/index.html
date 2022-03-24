@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sudoku</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/logo.png" type="image/png" sizes="50x50">
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="./js/main.js" defer></script>
+</head>
+
+<body>
+    <main>
+    
+    <dialog id="dialogAuto">
+        <p>This action will stop you from getting points for game, do you want to proceed ?</p>
+            <p>If this action takes too long you would need to restart browser
+        </p>
+        <div id="flexbuttons">
+            <button id="ok" tabindex="-1">OK</button>
+            <button id="cancel" tabindex="-1">Cancel</button>
+        </div>
+    </dialog>
+    <dialog id="dialogPost">
+        <h2>Scoreboard</h2>
+        <form method="post" action="/save">
+            <div id="nameInsert">
+                <label for="jmeno">Insert name: </label>
+                <p><input type="text" name="jmeno" placeholder="RatIRL"></p>
+            </div>
+            <div id="points">
+                <label for="body">You have scored: </label>
+                <p><input id="body" name="body" type="number" value="0" readonly></p>
+            </div>
+            <div id="humanplayed">
+                <label for="human">Without autocomplete: </label>
+                <p><input id="human" name="human" type="text" value="NO" readonly></p>
+            </div>
+            <div id="buttons">
+                <button type="submit">Send</button>
+                <button type="button">Close</button>
+            </div>
+        </form>
+    </dialog>
+    <div id="whole-flex">
+        <div id="autocomplete"><div id="autocomplete-text"><p>Autocomplete Sudoku</p></div></div>
+        <div id="restart"><p id="new-game-text">New Game</p></div>
+        <h1>SUDOKU</h1>
+        <div id="numberPick">
+            <div class="numberChoise">1</div>
+            <div class="numberChoise">2</div>
+            <div class="numberChoise">3</div>
+            <div class="numberChoise">4</div>
+            <div class="numberChoise">5</div>
+            <div class="numberChoise">6</div>
+            <div class="numberChoise">7</div>
+            <div class="numberChoise">8</div>
+            <div class="numberChoise">9</div>
+            <div class="numberChoise">X</div>
+        </div>
+        <div class="flexbox" data-result="">
+        </div>
+    </div>
+    </main>
+</body>
+
+</html>

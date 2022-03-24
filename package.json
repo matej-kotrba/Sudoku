@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "csvtojson": "^2.0.10",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "pug": "^3.0.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "sudoku",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
