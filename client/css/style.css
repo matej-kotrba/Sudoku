@@ -455,6 +455,18 @@ form input {
     #whole-flex {
         justify-content: start;
     }
+    #dialogPost {
+        width: 90vw;
+    }
+    dialog label {
+        width: 100%;
+        display: block;
+        flex-shrink: 0;
+    }
+    dialog input {
+        width: 100%;
+        display: block;
+    }
 }
 
 @media (max-width: 340px) {

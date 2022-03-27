@@ -17,6 +17,10 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 10px;
     color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-stroke: white 1px;
+    -moz-text-stroke: white 1px;
     background-image: linear-gradient(to top, black, rgb(175, 175, 175));
     background-clip: text;
     filter: drop-shadow(0 0 0.5em rgb(160, 0, 0));
