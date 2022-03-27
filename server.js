@@ -39,7 +39,18 @@ app.get('/scores', (req, res) => {
     csv().fromFile('./data/stats.csv')
     .then((data) => {
         // console.log(data)
-        res.render('index.pug', {'player': data})
+        let array = data
+        for (var i = 0; i < data.length; i++) {
+            for (var k = 0; k < data.length-1-i;k++) {
+                if (+array[k].body < +array[k+1].body) {
+                    let a = array[k]
+                    let b = array[k+1]
+                    array[k] = b
+                    array[k+1] = a
+                }
+            }
+        }
+        res.render('index.pug', {'player': array})
     })
     .catch((err) => {
         console.log("Error with reading file !!!")

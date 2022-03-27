@@ -142,7 +142,7 @@ function isCompleted() {
 let activeElement = null
 
 document.getElementById('autocomplete').addEventListener('click', (e) => {
-    document.getElementsByTagName('dialog')[0].showModal()
+    if (!document.querySelector('.flexbox').classList.contains('completed')) document.getElementsByTagName('dialog')[0].showModal()
 })
 
 document.getElementById('ok').addEventListener('click', (e) => {
@@ -156,6 +156,9 @@ document.getElementById('ok').addEventListener('click', (e) => {
         document.getElementById('body').value = points
         document.getElementById('human').value = "NO"
     }
+    else {
+        alert("In this state you cant complete game, remove previous moves.")
+    }
 })
 
 document.getElementById('cancel').addEventListener('click', (e) => {
@@ -168,6 +171,7 @@ document.getElementById('dontsend').addEventListener('click', (e) => {
 
 document.getElementById('restart').addEventListener('click', (e) => {
     checkGameState()
+    document.querySelector('#score').innerHTML = 'Score: '+checkScore()
 })
 
 for (let i = 0; i < tiles.length; i++) {
@@ -185,7 +189,6 @@ for (let i = 0; i < numberPicks.length; i++) {
             document.querySelector('.flexbox').dataset.result = "Completeted"
             document.querySelector('.flexbox').classList.add('completed')
             document.getElementById('dialogPost').showModal()
-            document.getElementById('body').value = "15"
             document.getElementById('human').value = "YES"
         }
     })
