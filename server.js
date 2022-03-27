@@ -5,9 +5,13 @@ const fs = require('fs')
 const path = require('path')
 const bodyParser = require('body-parser')
 const csv = require('csvtojson')
+const pug = require('pug')
 
 const app = express()
 const port = 3000
+
+app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.static('client'))
 
@@ -20,7 +24,7 @@ app.post('/save', urlencodedParser ,(req, res) => {
     let humanMade = req.body.human
     let date = new Date()
     console.log(name, points, humanMade)
-    let celek = `${name};${points};${humanMade}\n`
+    let celek = `${name},${points},${humanMade}\n`
     fs.appendFile('./data/stats.csv', celek, (err) => {
         if (err) {
             console.log("Error in editing file !!!")
@@ -29,6 +33,17 @@ app.post('/save', urlencodedParser ,(req, res) => {
         
     })
     res.redirect(301,'/')
+})
+
+app.get('/scores', (req, res) => {
+    csv().fromFile('./data/stats.csv')
+    .then((data) => {
+        // console.log(data)
+        res.render('index.pug', {'player': data})
+    })
+    .catch((err) => {
+        console.log("Error with reading file !!!")
+    })
 })
 
 app.listen(port, () => {

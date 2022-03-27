@@ -1,0 +1,24 @@
+html
+    body 
+        head
+            style
+                include style.css
+        main
+            span(onclick="window.location.assign('/')") Back
+            h1 scoreboard
+            div(id="gridtable")
+                div(class="grid-element")
+                    h2 Name 
+                div(class="grid-element")
+                    h2 Points
+                div(class="grid-element")
+                    h2 Without bot
+                each p in player
+                    div(class="grid-element")
+                        p #{p.jmeno}
+                    div(class="grid-element")
+                        p #{p.body}
+                    div(class="grid-element")
+                        p #{p.auto}
+        script
+            include script.js    

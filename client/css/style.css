@@ -28,6 +28,13 @@ h1 {
     -moz-text-stroke: white 1px;
 }
 
+#buttonsflex {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 #autocomplete {
     box-sizing: border-box;
     display: inline-block;
@@ -48,17 +55,24 @@ h1 {
     animation: buttonBackgroundAnimation 15s linear infinite;
 }
 
-#restart {
+.regularbutton {
     width: 100px;
-    aspect-ratio: 2/1;
-    background-color: grey;
-    border: rgb(70, 70, 70) 2px solid;
-    border-radius: 40px;
-    color: white;
-    position: relative;
-    text-align: center;
-    align-self: flex-end;
+    height: 50px;
     cursor: pointer;
+    transition: .2s transform;
+    border: black 2px solid;
+    border-radius: 5px;
+    background-color: grey;
+    color: white;
+    box-shadow: 2px 3px 0px 3px black;
+    font-family: var(--bacis-font);
+    position: relative;
+}
+
+.regularbutton:hover {
+    background-color: rgb(73, 73, 73);
+    transform: translate(5%, 10%);
+    box-shadow: none;
 }
 
 @keyframes buttonBackgroundAnimation {
@@ -121,7 +135,7 @@ h1 {
     }
 }
 
-button {
+dialog button {
     width: 100px;
     height: 45px;
     border-radius: 25px;
@@ -135,7 +149,7 @@ button {
     z-index: 1;
     user-select: none;
 }
-button::before {
+dialog button::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -148,12 +162,12 @@ button::before {
     z-index: -1;
     transition: 0.7s;
 }
-button:hover::before {
+dialog button:hover::before {
     width: 100%;
     transition: 0.2s linear;
     transform: translate(-50%, -50%) scaleY(1);
 }
-button:hover {
+dialog button:hover {
     transition: border-radius .5s, color 0.2s;
     color: white;
     border-radius: 10px;
@@ -214,6 +228,13 @@ button:hover {
     100% {
         opacity: 1;
     }
+}
+
+#score {
+    color: white;
+    text-align: center;
+    align-self: center;
+    font-size: 20px;
 }
 
 .flexbox {
@@ -418,9 +439,6 @@ form input {
 }
 
 @media (max-width: 600px) or (max-height: 600px) {
-    #autocomplete {
-        width: 50vw;
-    }
     .flexbox {
         width: 300px;
         height: 300px;
@@ -440,6 +458,14 @@ form input {
 }
 
 @media (max-width: 340px) {
+    #buttonsflex {
+        width: 90vw;
+        flex-direction: column;
+        align-self: center;
+    }
+    #buttonsflex * {
+        width: 100%;
+    }
     .flexbox {
         justify-content:center;
         width: 90vw;
