@@ -346,6 +346,10 @@ dialog button:hover {
     background: rgba(0, 0, 0, 0.61);
 }
 
+#dialogPost label {
+    flex-shrink: 0;
+}
+
 h2 {
     text-align: center;
     color: black;
@@ -456,16 +460,24 @@ form input {
         justify-content: start;
     }
     #dialogPost {
-        width: 90vw;
+        width: 95vw;
+        
     }
-    dialog label {
-        width: 100%;
-        display: block;
-        flex-shrink: 0;
+    #dialogPost h2 {
+        font-size: 35px;
     }
-    dialog input {
+    #dialogPost form > div {
+        flex-direction: column;
+    }
+    #dialogPost label {
+        font-size: 25px;      
         width: 100%;
-        display: block;
+        margin-top: 0;
+        float: left;
+    }
+    #dialogPost input {
+        margin-top: 0;
+        width: 100%;
     }
 }
 
