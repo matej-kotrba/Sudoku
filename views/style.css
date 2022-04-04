@@ -30,7 +30,18 @@ h1 {
     animation: linear stickAnimationOff .5s;
 }
 
-span:nth-child(1) {
+#bg {
+    background-color: #c02f2f;
+    position: fixed;
+    z-index: -5;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    left: 0;
+    clip-path: polygon(100% 12%, 100% 50%, 0 100%, 0 35%);
+}
+
+#back, #switch {
     position: fixed;
     background-color: grey;
     color: white;
@@ -40,13 +51,14 @@ span:nth-child(1) {
     left: 10px;
     top: 10px;
     overflow: hidden;
+    border: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-transform: uppercase;
     user-select: none;
     cursor: pointer;
 }
 
-span:nth-child(1)::before {
+#back::before {
     content: '';
     position: absolute;
     width: 200%;
@@ -60,9 +72,32 @@ span:nth-child(1)::before {
     transition: 0.4s;
 }
 
-span:nth-child(1):hover::before {
+#back:hover::before {
     transform: scale(1) rotate(-60deg);
     transition: 0.4s;
+}
+
+#switch {
+    top: 10%;
+    display: inline;
+    font-size: 25px;
+}
+
+#switch::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+    z-index: -1;
+    background-color: #c02f2f;
+    clip-path: polygon(72% 0, 100% 0, 100% 100%, 0 100%, 0 66%);
+    transition: 0.4s;
+}
+
+#switch:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 66%);
 }
 
 .isSticked {
@@ -160,37 +195,3 @@ span:nth-child(1):hover::before {
         font-size: 1rem;
     }
 }
-
-/* table {
-    position: absolute;
-    inset: 50% 0 0 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border: black 3px solid;
-    border-radius: 20px;
-    width: 60vw;
-    height: 60vh;
-    box-sizing: border-box;
-    border-collapse: collapse;
-}
-
-th {
-    font-size: 3rem;
-    width: 25%;
-    height: 100px;
-    text-align: center;
-}
-
-th:nth-child(1) {
-    width: 50%;
-}
-
-td {
-    text-align: center;
-    font-size: 2rem;
-    overflow-wrap: break-word;
-}
-
-tr {
-    border-bottom: black 2px solid;
-} */

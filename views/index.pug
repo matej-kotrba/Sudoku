@@ -4,7 +4,10 @@ html
             style
                 include style.css
         main
-            span(onclick="window.location.assign('/')") Back
+            div(id="bg")
+            form(action="/aaa", method="post") 
+                button(type="submit" id="switch") Change sort
+            span(id="back" onclick="window.location.assign('/')") Back
             h1 scoreboard
             div(id="gridtable")
                 div(class="grid-element")
