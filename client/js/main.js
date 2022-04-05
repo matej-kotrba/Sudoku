@@ -141,6 +141,8 @@ function isCompleted() {
 
 let activeElement = null
 
+// BUTTON ACTIONS
+
 document.getElementById('autocomplete').addEventListener('click', (e) => {
     if (!document.querySelector('.flexbox').classList.contains('completed')) document.getElementsByTagName('dialog')[0].showModal()
 })
@@ -199,6 +201,8 @@ for (let i = 0; i < numberPicks.length; i++) {
         })
     }
 }
+
+// BUTTON ACTION END
 
 // Concludes for each filled tile
 

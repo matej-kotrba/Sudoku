@@ -16,8 +16,6 @@ function changeLeaderboards() {
     document.location.assign('/change')
 }
 
-//clip-path: polygon(100% 12%, 100% 50%, 0 100%, 0 35%);
-
 document.addEventListener('scroll', (e) => {
     let value = (scrollY / scrollMaxY) * 50
     document.getElementById('bg').style.clipPath = `polygon(100% 12%, 100% ${50 + value}%, 0 100%, 0 35%)`

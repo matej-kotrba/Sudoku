@@ -26,6 +26,15 @@ h1 {
     box-shadow: 0 0 0px 0px rgb(160, 0, 0);
 }
 
+.isSticked {
+    box-shadow: 0 0 300px 20px rgb(160, 0, 0);
+    animation: linear stickAnimation .5s;
+    /* background-clip: border-box;
+    background-image: none; */
+    /* background-color: rgb(160, 0, 0); */
+    border-radius: 0 0 15px 15px;
+}
+
 .removeActive {
     animation: linear stickAnimationOff .5s;
 }
@@ -92,48 +101,35 @@ h1 {
     top: 0%;
     z-index: -1;
     background-color: #c02f2f;
-    clip-path: polygon(72% 0, 100% 0, 100% 100%, 0 100%, 0 66%);
+    transform-origin: left;
+    transform: scaleX(0);
     transition: 0.4s;
 }
 
 #switch:hover::before {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 66%);
+    transform: scaleX(1);
 }
 
-.isSticked {
-    box-shadow: 0 0 300px 150px rgb(160, 0, 0);
-    animation: linear stickAnimation .5s;
-    background-clip: border-box;
-    background-image: none;
-    background-color: rgb(160, 0, 0);
-    border-radius: 0 0 15px 15px;
-    color: grey;
-}
 
 @keyframes stickAnimationOff {
     0% {
-        box-shadow: 0 0 300px 150px rgb(160, 0, 0);
+        box-shadow: 0 0 300px 20px rgb(160, 0, 0);
     }
 
     100% {
-        box-shadow: 0 0 300px 0px rgb(160, 0, 0);
+        box-shadow: 0 0 0px 0px rgb(160, 0, 0);
     }
 }
 
 @keyframes stickAnimation {
     0% {
-        box-shadow: 0 0 300px 0px rgb(160, 0, 0);
-        background-clip: border-box;
-        background-image: none;
-        background-color: transparent;
+        box-shadow: 0 0 0px 0px rgb(160, 0, 0);
         border-radius: 0 0 0px 0px;
     }
 
     100% {
-        box-shadow: 0 0 300px 150px rgb(160, 0, 0);
-        background-clip: border-box;
-        background-image: none;
-        background-color: rgb(160, 0, 0);
+        box-shadow: 0 0 300px 20px rgb(160, 0, 0);
+        /* background-color: rgb(160, 0, 0); */
         border-radius: 0 0 15px 15px;
     }
 }

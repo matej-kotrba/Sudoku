@@ -5,17 +5,22 @@
     --big-font-size: 4rem;
     --letter-spacing-value: 20px;
     --bacis-font: Georgia, 'Times New Roman', Times, serif;
+
+    --h1-font: 'Space Mono', monospace;
+    --h1-animation-repeat: 6;
 }
 
 body {
-    background: radial-gradient(ellipse,rgb(46, 46, 46),black);
+    /* background: radial-gradient(ellipse,rgb(46, 46, 46),black); */
+    background-color: rgb(29, 29, 29);
 }
 
 h1 {
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    position: relative;
+    font-family: var(--h1-font);
     text-align: center;
     font-size: min(var(--big-font-size), 8vw);
-    font-style:oblique;
+    /* font-style: oblique; */
     letter-spacing: 20px;
     margin: 10px 0 10px var(--letter-spacing-value);
     user-select: none;
@@ -28,6 +33,46 @@ h1 {
     -moz-text-stroke: white 1px;
 }
 
+h1::before,
+h1::after {
+    content: '';
+    inset: 0;
+    position: absolute;
+    background-color: rgb(29, 29, 29);
+    animation: typeWriteEffect 3s steps(var(--h1-animation-repeat)) forwards;
+}
+
+h1::before {
+    animation-delay: .1s;
+}
+
+h1::after {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    background-color: transparent;
+    animation:
+    typeWriteEffect 3s steps(var(--h1-animation-repeat)) forwards, 
+    cursorBlink .5s linear;
+    animation-iteration-count: var(--h1-animation-repeat);
+}
+
+@keyframes typeWriteEffect {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes cursorBlink {
+    from {
+        background-color: whitesmoke;
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
 #buttonsflex {
     align-self: flex-end;
     display: flex;
@@ -35,25 +80,6 @@ h1 {
     gap: 10px;
 }
 
-#autocomplete {
-    box-sizing: border-box;
-    display: inline-block;
-    position: relative;
-    right: 0px;
-    width: 120px;
-    height: 60px;
-    background: linear-gradient(to top right, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    border-radius: 5px;
-    text-align: center;
-    font-size: 1.1rem;
-    color: white;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    user-select: none;
-    cursor: pointer;
-    background-size: 300% 300%;
-    align-self: flex-end;
-    animation: buttonBackgroundAnimation 15s linear infinite;
-}
 
 .regularbutton {
     width: 100px;
@@ -87,6 +113,27 @@ h1 {
     }
 }
 
+#autocomplete {
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    right: 0px;
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(to top right, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    user-select: none;
+    cursor: pointer;
+    background-size: 300% 300%;
+    align-self: flex-end;
+    animation: buttonBackgroundAnimation 15s linear infinite;
+    transition: transform .2s;
+}
+
 #autocomplete-text {
     position: absolute;
     top: -10%;
@@ -96,6 +143,8 @@ h1 {
 
 #autocomplete:hover {
     background: white;
+    transform: translate(5%, 10%);
+    
 }
 
 #autocomplete:hover > #autocomplete-text {
@@ -104,7 +153,6 @@ h1 {
     -webkit-background-clip: text;
     -moz-background-clip: text;
     color: transparent;
-    
 }
 
 #dialogAuto {

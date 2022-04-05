@@ -26,10 +26,9 @@ app.post('/save', urlencodedParser, (req, res) => {
     let name = req.body.jmeno || "Anonym"
     let points = req.body.body
     let humanMade = req.body.human
-    let date = new Date()
     console.log(name, points, humanMade)
-    let celek = `${name},${points},${humanMade}\n`
-    fs.appendFile('./data/stats.csv', celek, (err) => {
+    let celek = `${name},${points},${humanMade}\r\n`
+    fs.appendFile('./data/stats.csv', celek ,(err) => {
         if (err) {
             console.log("Error in editing file !!!")
             return
@@ -43,6 +42,7 @@ app.get('/scores', (req, res) => {
     let leaderboardsData
     csv().fromFile('./data/stats.csv')
         .then((data) => {
+            console.log(data)
             leaderboardsData = data
             fs.readFile('./data/settings.json', (err, data) => {
                 let text = JSON.parse(data)
@@ -57,20 +57,19 @@ app.get('/scores', (req, res) => {
         })
 })
 
-app.get('/change', (req, res) => {
-    console.log(req.body)
-    fs.readFile('./data/settings.json', "utf8", (err, data) => {
-        let text = JSON.parse(data)
-        console.log(text['sort'])
-        if (text['sort'] == "byName") fs.writeFile('./data/settings.json', JSON.stringify({ "sort": "byPoints" }), () => { })
-        if (text['sort'] == "byPoints") fs.writeFile('./data/settings.json', JSON.stringify({ "sort": "byName" }), () => { })
-        res.redirect(301, "/scores")
-    })
-})
+// app.get('/change', (req, res) => {
+//     console.log(req.body)
+//     fs.readFile('./data/settings.json', "utf8", (err, data) => {
+//         let text = JSON.parse(data)
+//         console.log(text['sort'])
+//         if (text['sort'] == "byName") fs.writeFile('./data/settings.json', JSON.stringify({ "sort": "byPoints" }), () => { })
+//         if (text['sort'] == "byPoints") fs.writeFile('./data/settings.json', JSON.stringify({ "sort": "byName" }), () => { })
+//         res.redirect(301, "/scores")
+//     })
+// })
 
 app.post('/aaa', urlencodedParser, (req, res) => {
     fs.readFile('./data/settings.json', 'utf8', (err, data) => {
-        console.log(data)
         let text = JSON.parse(data)
         if (text.sort == "byName") fs.writeFile('./data/settings.json', JSON.stringify({ 'sort': 'byPoints' }), (err, data) => {
             console.log("Done.")
